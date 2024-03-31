@@ -95,16 +95,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">
-                                <button type="button" class="btn btn-primary btn-sm">Login</button>
-                            </a>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">    
-                                <button type="button" class="btn btn-primary btn-sm">Register</button>
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">
+                                    <button type="button" class="btn btn-primary btn-sm">Login</button>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">
+                                    <button type="button" class="btn btn-primary btn-sm">Register</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

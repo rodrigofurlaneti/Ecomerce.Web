@@ -4,5 +4,121 @@
 
 <div class="text-center">
     <h1 class="display-4">Register</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <p>Create your registration.</p>
+                <p>View your orders easily, shop faster and have a personalized experience.</p>
+                <p>*Required fields</p>
+            </div>
+        </div>
+        <form method="post" action="ActivateYourRegistration">
+            <fieldset>
+                <legend>Account</legend>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="FullName" class="form-label">FullName*</label>
+                            <input class="form-control form-control-sm" id="FullName" name="FullName" type="text" placeholder="Full name">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="Gender" class="form-label">Gender*</label>
+                            <select class="form-select form-control form-control-sm" id="Gender" name="Gender">
+                                <option selected>Selected</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="DateOfBirth" class="form-label">Date of birth*</label>
+                            <input class="form-control form-control-sm" id="DateOfBirth" name="DateOfBirth" type="date" placeholder="Date of birth">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="RegistrationOfIndividuals" class="form-label">Registration of individuals*</label>
+                            <input class="form-control form-control-sm" 
+                                   id="RegistrationOfIndividuals"
+                                   name="RegistrationOfIndividuals" 
+                                   type="text"
+                                   placeholder="Registration of individuals">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="Telephone" class="form-label">Telephone*</label>
+                            <input class="form-control form-control-sm" id="Telephone" name="Telephone" type="text" placeholder="Telephone">
+                        </div>
+                    </div>
+                </div>
+                <legend>Address</legend>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="ZipCode" class="form-label">ZipCode*</label>
+                            <input class="form-control form-control-sm" id="ZipCode" name="ZipCode" type="text" placeholder="ZipCode">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="Address" class="form-label">Address*</label>
+                            <input class="form-control form-control-sm" id="Address" name="Address" type="text" placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="Number" class="form-label">Number*</label>
+                            <input class="form-control form-control-sm" id="Number" name="Number" type="text" placeholder="Number">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="Neighborhood" class="form-label">Neighborhood*</label>
+                            <input class="form-control form-control-sm" id="Neighborhood" name="Neighborhood" type="text" placeholder="Neighborhood">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="City" class="form-label">City*</label>
+                            <input class="form-control form-control-sm" id="City" name="City" type="text" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="State" class="form-label">State*</label>
+                            <select class="form-select form-control form-control-sm" id="State" name="State">
+                                <option selected>Selected</option>
+                                <option value="SP">SP</option>
+                                <option value="RJ">RJ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <legend>Login</legend>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="Email" class="form-label">Email*</label>
+                            <input class="form-control form-control-sm" id="Email" name="Email" type="text" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="Password" class="form-label">Password*</label>
+                            <input class="form-control form-control-sm" id="Password" name="Password" type="password" placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+        </form>
+    </div>
 </div>
+
+<script type="text/javascript">
+
+</script>
