@@ -1,5 +1,6 @@
 ﻿using Ecomerce.Domain.Entities;
 using Ecomerce.Domain.SeedWork;
+using Ecomerce.Infrastructure.Repository.Register;
 
 namespace Ecomerce.Service.Service.Register
 {

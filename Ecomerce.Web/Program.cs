@@ -1,27 +1,31 @@
-var builder = WebApplication.CreateBuilder(args);
+using Ecomerce.Web;
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+WebApplication.CreateBuilder(args).UseStartup<Startup>();
 
-var app = builder.Build();
+//var builder = WebApplication.CreateBuilder(args);
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+//// Add services to the container.
+//builder.Services.AddControllersWithViews();
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+//var app = builder.Build();
 
-app.UseRouting();
+//// Configure the HTTP request pipeline.
+//if (!app.Environment.IsDevelopment())
+//{
+//    app.UseExceptionHandler("/Home/Error");
+//    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+//    app.UseHsts();
+//}
 
-app.UseAuthorization();
+//app.UseHttpsRedirection();
+//app.UseStaticFiles();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.UseRouting();
 
-app.Run();
+//app.UseAuthorization();
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+//app.Run();

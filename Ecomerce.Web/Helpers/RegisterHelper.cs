@@ -1,76 +1,80 @@
-﻿using Ecomerce.Web.Models;
+﻿using Ecomerce.Domain.Entities;
+using Ecomerce.Web.Models;
 using System.Text.Json;
 
 namespace Ecomerce.Web.Helpers
 {
     public static class RegisterHelper
     {
-        public static BuyerModel DeparaViewToController(IFormCollection iFormCollection)
+        public static RegisterEntity DeparaViewToController(IFormCollection iFormCollection)
         {
-            BuyerModel buyerModel = new BuyerModel();
+            RegisterEntity registerEntity = new RegisterEntity();
 
             foreach (var form in iFormCollection)
             {
 
                 if (form.Key.Equals("FullName"))
                 {
-                    buyerModel.FullName = form.Value;
+                    registerEntity.FullName = form.Value;
                 }
                 else if (form.Key.Equals("Gender"))
                 {
                     if(form.Value.Equals("1"))
-                        buyerModel.Gender = "Male";
+                        registerEntity.Gender = "Male";
                     else
-                        buyerModel.Gender = "Female";
+                        registerEntity.Gender = "Female";
                 }
                 else if (form.Key.Equals("DateOfBirth"))
                 {
-                    buyerModel.DateOfBirth = form.Value;
+                    registerEntity.DateOfBirth = form.Value;
                 }
                 else if(form.Key.Equals("RegistrationOfIndividuals"))
                 {
-                    buyerModel.RegistrationOfIndividuals = form.Value;
+                    registerEntity.RegistrationOfIndividuals = form.Value;
                 }
                 else if(form.Key.Equals("Telephone"))
                 {
-                    buyerModel.Telephone = form.Value;
+                    registerEntity.Telephone = form.Value;
                 }
                 else if (form.Key.Equals("ZipCode"))
                 {
-                    buyerModel.ZipCode = form.Value;
+                    registerEntity.ZipCode = form.Value;
                 }
                 else if (form.Key.Equals("Address"))
                 {
-                    buyerModel.Address = form.Value;
+                    registerEntity.Address = form.Value;
                 }
                 else if (form.Key.Equals("Number"))
                 {
-                    buyerModel.Number = form.Value;
+                    registerEntity.Number = form.Value;
                 }
                 else if (form.Key.Equals("Neighborhood"))
                 {
-                    buyerModel.Neighborhood = form.Value;
+                    registerEntity.Neighborhood = form.Value;
                 }
                 else if (form.Key.Equals("City"))
                 {
-                    buyerModel.City = form.Value;
+                    registerEntity.City = form.Value;
                 }
                 else if (form.Key.Equals("State"))
                 {
-                    buyerModel.State = form.Value;
+                    registerEntity.State = form.Value;
                 }
                 else if (form.Key.Equals("Email"))
                 {
-                    buyerModel.Email = form.Value;
+                    registerEntity.Email = form.Value;
                 }
                 else if (form.Key.Equals("Password"))
                 {
-                    buyerModel.Password = form.Value;
+                    registerEntity.Password = form.Value;
                 }
-                buyerModel.ConfirmedEmail = false;
+                registerEntity.ConfirmedEmail = false;
+                registerEntity.Status = false;
+                registerEntity.DateInsert = DateTime.Now;
+                registerEntity.DateUpdate = DateTime.Now;
             }
 
-            return buyerModel;
+            return registerEntity;
         }
     }
 }

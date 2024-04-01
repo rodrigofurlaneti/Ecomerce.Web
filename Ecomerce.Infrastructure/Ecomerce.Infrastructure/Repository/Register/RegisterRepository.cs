@@ -14,7 +14,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             try
             {
                 _logger.TraceEntry("Infrastructure_Register_DeleteAsync");
-                _commandText = "USP_Restaurant_Register_Delete";
+                _commandText = "USP_Ecomerce_Register_Delete";
                 SqlConnection sqlConnection = new SqlConnection(_connectionString);
                 SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
                 GetRegisterDelete(sqlCommand, id);
@@ -38,7 +38,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             try
             {
                 _logger.TraceEntry("Infrastructure_Register_GetAsync");
-                _commandText = "USP_Restaurant_Register_Get";
+                _commandText = "USP_Ecomerce_Register_Get";
                 using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
@@ -68,7 +68,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             try
             {
                 _logger.TraceEntry("Infrastructure_Register_GetByIdAsync");
-                _commandText = "USP_Restaurant_Register_GetById";
+                _commandText = "USP_Ecomerce_Register_GetById";
                 using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
@@ -97,7 +97,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             try
             {
                 _logger.TraceEntry("Infrastructure_Register_PostAsync");
-                _commandText = "USP_Restaurant_Register_Post";
+                _commandText = "USP_Ecomerce_Register_Post";
                 SqlConnection sqlConnection = new SqlConnection(_connectionString);
                 SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
                 GetRegisterInsert(sqlCommand, entity);
@@ -120,7 +120,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             try
             {
                 _logger.TraceEntry("Infrastructure_Register_PutAsync");
-                _commandText = "USP_Restaurant_Register_Put";
+                _commandText = "USP_Ecomerce_Register_Put";
                 SqlConnection sqlConnection = new SqlConnection(_connectionString);
                 SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
                 GetRegisterUpdate(sqlCommand, entity);
@@ -158,6 +158,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             registerEntity.ZipCode = Convert.ToString(sqlDataReader["ZipCode"]);
             registerEntity.Address = Convert.ToString(sqlDataReader["Address"]);
             registerEntity.Number = Convert.ToString(sqlDataReader["Number"]);
+            registerEntity.Neighborhood = Convert.ToString(sqlDataReader["Neighborhood"]);
             registerEntity.City = Convert.ToString(sqlDataReader["City"]);
             registerEntity.State = Convert.ToString(sqlDataReader["State"]);
             registerEntity.Email = Convert.ToString(sqlDataReader["Email"]);
@@ -178,6 +179,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             sqlCommand.Parameters.AddWithValue("@ZipCode", entity.ZipCode);
             sqlCommand.Parameters.AddWithValue("@Address", entity.Address);
             sqlCommand.Parameters.AddWithValue("@Number", entity.Number);
+            sqlCommand.Parameters.AddWithValue("@Neighborhood", entity.Neighborhood);
             sqlCommand.Parameters.AddWithValue("@City", entity.City);
             sqlCommand.Parameters.AddWithValue("@State", entity.State);
             sqlCommand.Parameters.AddWithValue("@Email", entity.Email);
@@ -199,6 +201,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             sqlCommand.Parameters.AddWithValue("@ZipCode", entity.ZipCode);
             sqlCommand.Parameters.AddWithValue("@Address", entity.Address);
             sqlCommand.Parameters.AddWithValue("@Number", entity.Number);
+            sqlCommand.Parameters.AddWithValue("@Neighborhood", entity.Neighborhood);
             sqlCommand.Parameters.AddWithValue("@City", entity.City);
             sqlCommand.Parameters.AddWithValue("@State", entity.State);
             sqlCommand.Parameters.AddWithValue("@Email", entity.Email);

@@ -2,7 +2,7 @@
 
 namespace Ecomerce.Service.Service.Register
 {
-    public interface IUserService : IService<RegisterEntity>
+    public interface IRegisterService : IService<RegisterEntity>
     {
     }
 }
