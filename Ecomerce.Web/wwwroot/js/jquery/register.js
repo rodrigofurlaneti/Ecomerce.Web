@@ -1,4 +1,5 @@
-﻿    $(document).ready(function() {
+﻿//Função CEP 
+    $(document).ready(function () {
 
         function limpa_formulário_cep() {
             $("#Address").val("");
@@ -56,7 +57,7 @@
     });
 
 
-30776528890
+//Função CPF 
 
 $(document).ready(function () {
 
@@ -101,6 +102,81 @@ $(document).ready(function () {
         else {
 
             limpa_formulário_cpf();
+        }
+    });
+});
+
+//Função CNPJ
+
+$(document).ready(function () {
+
+    function limpa_formulário_cnpj() {
+        $("#CorporateReason").val("");
+        $("#FantasyName").val("");
+        $("#OpeningDate").val("");
+        $("#Situation").val("");
+        $("#AddressCnpj").val("");
+        $("#NumberCnpj").val("");
+        $("#NeighborhoodCnpj").val("");
+        $("#ZipCodeCnpj").val("");
+        $("#CityCnpj").val("");
+        $("#StateCnpj").val("");
+        $("#Members").val("");
+    }
+
+    $("#NationalRegisterOfLegalEntities").blur(function () {
+
+        var cnpj = $(this).val().replace(/\D/g, '');
+
+        if (cnpj != "") {
+
+            var validacnpj = /^[0-9]{14}$/;
+
+            if (validacnpj.test(cnpj)) {
+
+                $("#CorporateReason").val("");
+                $("#FantasyName").val("");
+                $("#OpeningDate").val("");
+                $("#Situation").val("");
+                $("#AddressCnpj").val("");
+                $("#NumberCnpj").val("");
+                $("#NeighborhoodCnpj").val("");
+                $("#ZipCodeCnpj").val("");
+                $("#CityCnpj").val("");
+                $("#StateCnpj").val("");
+                $("#Members").val("");
+
+                $.getJSON("http://ws.hubdodesenvolvedor.com.br/v2/cnpj/?cnpj=" + cnpj + "&token=144757125lRJQNMXWUP261354600", function (dados) {
+
+                    if (!("erro" in dados)) {
+                        $("#CorporateReason").val(dados.result.nome);
+                        $("#FantasyName").val(dados.result.fantasia);
+                        $("#OpeningDate").val(dados.result.abertura);
+                        $("#Situation").val(dados.result.situacao);
+                        $("#AddressCnpj").val(dados.result.logradouro);
+                        $("#NumberCnpj").val(dados.result.numero);
+                        $("#NeighborhoodCnpj").val(dados.result.bairro);
+                        $("#ZipCodeCnpj").val(dados.result.cep);
+                        $("#CityCnpj").val(dados.result.municipio);
+                        $("#StateCnpj").val(dados.result.uf);
+                        $("#Members").val(dados.result.quadro_socios);
+                    }
+                    else {
+
+                        limpa_formulário_cnpj();
+                        alert("Cpf não encontrado.");
+                    }
+                });
+            } 
+            else {
+
+                limpa_formulário_cnpj();
+                alert("Formato de Cpf inválido.");
+            }
+        } 
+        else {
+
+            limpa_formulário_cnpj();
         }
     });
 });
