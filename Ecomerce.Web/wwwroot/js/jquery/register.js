@@ -12,17 +12,17 @@
 
                 var cep = $(this).val().replace(/\D/g, '');
 
-    if (cep != "") {
+            if (cep != "") {
 
-                    var validacep = /^[0-9]{8}$/;
+                            var validacep = /^[0-9]{8}$/;
 
-    if(validacep.test(cep)) {
+            if(validacep.test(cep)) {
 
-        $("#Address").val("");
-        $("#Neighborhood").val("");
-        $("#City").val("");
-        $("#State").val("");
-        $("#ibge").val("");
+                $("#Address").val("");
+                $("#Neighborhood").val("");
+                $("#City").val("");
+                $("#State").val("");
+                $("#ibge").val("");
 
     $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
@@ -53,4 +53,54 @@
                 limpa_formulário_cep();
                         }
                     });
+    });
+
+
+30776528890
+
+$(document).ready(function () {
+
+    function limpa_formulário_cpf() {
+        $("#FullName").val("");
+        $("#DateOfBirth").val("");
+    }
+
+    $("#RegistrationOfIndividuals").blur(function () {
+
+        var cpf = $(this).val().replace(/\D/g, '');
+
+        if (cpf != "") {
+
+            var validacpf = /^[0-9]{11}$/;
+
+            if (validacpf.test(cpf)) {
+
+                $("#FullName").val("");
+                $("#DateOfBirth").val("");
+
+                $.getJSON("http://ws.hubdodesenvolvedor.com.br/v2/cpf/?cpf=" + cpf + "&data=&token=144757125lRJQNMXWUP261354600", function (dados) {
+
+                    if (!("erro" in dados)) {
+                        console.log(dados);
+                        $("#FullName").val(dados.result.nome_da_pf);
+                        $("#DateOfBirth").val(dados.result.data_nascimento);
+                    }
+                    else {
+
+                        limpa_formulário_cpf();
+                        alert("Cpf não encontrado.");
+                    }
                 });
+            } //end if.
+            else {
+
+                limpa_formulário_cpf();
+                alert("Formato de Cpf inválido.");
+            }
+        } //end if.
+        else {
+
+            limpa_formulário_cpf();
+        }
+    });
+});

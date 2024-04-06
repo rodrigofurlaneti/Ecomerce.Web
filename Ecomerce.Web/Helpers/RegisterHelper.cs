@@ -1,6 +1,4 @@
 ﻿using Ecomerce.Domain.Entities;
-using Ecomerce.Web.Models;
-using System.Text.Json;
 
 namespace Ecomerce.Web.Helpers
 {
