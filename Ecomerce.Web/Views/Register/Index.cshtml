@@ -4,242 +4,531 @@
 <script src="~/js/jquery/register.js"></script>
 <div>
     <h1 class="display-4 text-center">Register</h1>
-    <div class="container">
-        <div class="row justify-content-end">
-            <div class="col text-center">
-                <p>Create your registration.</p>
-                <p>View your orders easily, shop faster and have a personalized experience.</p>
-                <p>*Required fields</p>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalRegistrationPhysicalPerson">
+        Registration physical person
+    </button>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalLegalEntityRegistration">
+        Legal entity registration
+    </button>
+</div>
+
+<div class="modal fade" id="ModalRegistrationPhysicalPerson" tabindex="-1" aria-labelledby="ModalRegistrationPhysicalPersonLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registration physical person</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row justify-content-end">
+                        <div class="col text-center">
+                            <p>Create your registration.</p>
+                            <p>View your orders easily, shop faster and have a personalized experience.</p>
+                            <p>*Required fields</p>
+                        </div>
+                    </div>
+                    <form method="post" action="ActivateYourRegistration">
+                        <fieldset>
+                            <legend class="display-4 text-center">Account</legend>
+                            <div class="row">
+                                <div class="col-3 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="RegistrationOfIndividuals" class="form-label">Registration of individuals*</label>
+                                    </div>
+                                </div>
+                                <div class="col-3 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="FullName" class="form-label">Full name*</label>
+                                    </div>
+                                </div>
+                                <div class="col-2 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="DateOfBirth" class="form-label">Date of birth*</label>
+                                    </div>
+                                </div>
+                                <div class="col-2 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Gender" class="form-label">Gender*</label>
+                                    </div>
+                                </div>
+                                <div class="col-2 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Telephone" class="form-label">Telephone*</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 align-self-start">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="RegistrationOfIndividuals"
+                                               name="RegistrationOfIndividuals"
+                                               type="text"
+                                               placeholder="Registration of individuals">
+                                    </div>
+                                </div>
+                                <div class="col-3 align-self-start">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="FullName"
+                                               name="FullName"
+                                               type="text"
+                                               placeholder="Full name">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="DateOfBirth"
+                                               name="DateOfBirth"
+                                               type="text"
+                                               placeholder="Date of birth">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="mb-1">
+                                        <select class="form-select form-control form-control-sm" id="Gender" name="Gender">
+                                            <option selected>Selected</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="Telephone"
+                                               name="Telephone"
+                                               type="text"
+                                               placeholder="Telephone">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <legend class="display-4 text-center">Address</legend>
+                            <div class="row">
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="ZipCode" class="form-label">ZipCode*</label>
+                                    </div>
+                                </div>
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Address" class="form-label">Address*</label>
+                                    </div>
+                                </div>
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Number" class="form-label">Number*</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="ZipCode"
+                                               name="ZipCode"
+                                               type="text"
+                                               placeholder="ZipCode">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="Address"
+                                               name="Address"
+                                               type="text"
+                                               placeholder="Address">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="Number"
+                                               name="Number"
+                                               type="text"
+                                               placeholder="Number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Neighborhood" class="form-label">Neighborhood*</label>
+                                    </div>
+                                </div>
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="City" class="form-label">City*</label>
+                                    </div>
+                                </div>
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="State" class="form-label">State*</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="Neighborhood"
+                                               name="Neighborhood"
+                                               type="text"
+                                               placeholder="Neighborhood">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="City"
+                                               name="City"
+                                               type="text"
+                                               placeholder="City">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <select class="form-select form-control form-control-sm"
+                                                id="State"
+                                                name="State">
+                                            <option selected>Selected</option>
+                                            <option value="SP">SP</option>
+                                            <option value="RJ">RJ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <legend class="display-4 text-center">Login</legend>
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Email" class="form-label">Email*</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4">
+                                    <div class="md-1">
+                                        <input class="form-control form-control-sm" id="Email" name="Email" type="text" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Password" class="form-label">Password*</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm" id="Password" name="Password" type="password" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
-        <form method="post" action="ActivateYourRegistration">
-            <fieldset>
-                <legend class="display-4 text-center">Account</legend>
-                <div class="row">
-                    <div class="col-3 align-self-end">
-                        <div class="mb-1">
-                            <label for="RegistrationOfIndividuals" class="form-label">Registration of individuals*</label>
-                        </div>
-                    </div>
-                    <div class="col-3 align-self-end">
-                        <div class="mb-1">
-                            <label for="FullName" class="form-label">Full name*</label>
-                        </div>
-                    </div>
-                    <div class="col-2 align-self-end">
-                        <div class="mb-1">
-                            <label for="DateOfBirth" class="form-label">Date of birth*</label>
-                        </div>
-                    </div>
-                    <div class="col-2 align-self-end">
-                        <div class="mb-1">
-                            <label for="Gender" class="form-label">Gender*</label>
-                        </div>
-                    </div>
-                    <div class="col-2 align-self-end">
-                        <div class="mb-1">
-                            <label for="Telephone" class="form-label">Telephone*</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 align-self-start">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm" 
-                                    id="RegistrationOfIndividuals" 
-                                    name="RegistrationOfIndividuals" 
-                                    type="text"
-                                   placeholder="Registration of individuals">
-                        </div>
-                    </div>
-                    <div class="col-3 align-self-start">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm" 
-                                    id="FullName" 
-                                    name="FullName" 
-                                    type="text" 
-                                    placeholder="Full name">
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm"
-                                   id="DateOfBirth"
-                                   name="DateOfBirth"
-                                   type="text"
-                                   placeholder="Date of birth">
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="mb-1">
-                            <select class="form-select form-control form-control-sm" id="Gender" name="Gender">
-                                <option selected>Selected</option>
-                                <option value="1">Male</option>
-                                <option value="2">Female</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm"
-                                   id="Telephone"
-                                   name="Telephone"
-                                   type="text"
-                                   placeholder="Telephone">
+    </div>
+</div>
 
+<div class="modal fade" id="ModalLegalEntityRegistration" tabindex="-1" aria-labelledby="ModalLegalEntityRegistrationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Legal entity registration</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row justify-content-end">
+                        <div class="col text-center">
+                            <p>Create your registration.</p>
+                            <p>View your orders easily, shop faster and have a personalized experience.</p>
+                            <p>*Required fields</p>
                         </div>
                     </div>
-                </div>
+                    <form method="post" action="ActivateYourRegistration">
+                        <fieldset>
+                            <legend class="display-4 text-center">Account</legend>
+                            <div class="row">
+                                <div class="col-6 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="RegistrationOfIndividuals" class="form-label">Registration of individuals*</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="FullName" class="form-label">Full name*</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 align-self-start">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="RegistrationOfIndividuals"
+                                               name="RegistrationOfIndividuals"
+                                               type="text"
+                                               placeholder="Registration of individuals">
+                                    </div>
+                                </div>
+                                <div class="col-6 align-self-start">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="FullName"
+                                               name="FullName"
+                                               type="text"
+                                               placeholder="Full name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="DateOfBirth" class="form-label">Date of birth*</label>
+                                    </div>
+                                </div>
+                                <div class="col-4 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Gender" class="form-label">Gender*</label>
+                                    </div>
+                                </div>
+                                <div class="col-4 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Telephone" class="form-label">Telephone*</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="DateOfBirth"
+                                               name="DateOfBirth"
+                                               type="text"
+                                               placeholder="Date of birth">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mb-1">
+                                        <select class="form-select form-control form-control-sm" id="Gender" name="Gender">
+                                            <option selected>Selected</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="Telephone"
+                                               name="Telephone"
+                                               type="text"
+                                               placeholder="Telephone">
 
-                <legend class="display-4 text-center">Address</legend>
-                <div class="row">
-                    <div class="col align-self-end">
-                        <div class="mb-1">
-                            <label for="ZipCode" class="form-label">ZipCode*</label>
-                        </div>
-                    </div>
-                    <div class="col align-self-end">
-                        <div class="mb-1">
-                            <label for="Address" class="form-label">Address*</label>
-                        </div>
-                    </div>
-                    <div class="col align-self-end">
-                        <div class="mb-1">
-                            <label for="Number" class="form-label">Number*</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm" 
-                                   id="ZipCode" 
-                                   name="ZipCode" 
-                                   type="text" 
-                                   placeholder="ZipCode">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm" 
-                                    id="Address" 
-                                    name="Address" 
-                                    type="text" 
-                                    placeholder="Address">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm" 
-                                    id="Number" 
-                                    name="Number" 
-                                    type="text" 
-                                    placeholder="Number">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col align-self-end">
-                        <div class="mb-1">
-                            <label for="Neighborhood" class="form-label">Neighborhood*</label>
-                        </div>
-                    </div>
-                    <div class="col align-self-end">
-                        <div class="mb-1">
-                            <label for="City" class="form-label">City*</label>
-                        </div>
-                    </div>
-                    <div class="col align-self-end">
-                        <div class="mb-1">
-                            <label for="State" class="form-label">State*</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm" 
-                                    id="Neighborhood"
-                                    name="Neighborhood" 
-                                    type="text" 
-                                    placeholder="Neighborhood">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm" 
-                                    id="City" 
-                                    name="City" 
-                                    type="text" 
-                                    placeholder="City">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-1">
-                            <select class="form-select form-control form-control-sm" 
-                                    id="State" 
-                                    name="State">
-                                <option selected>Selected</option>
-                                <option value="SP">SP</option>
-                                <option value="RJ">RJ</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                <legend class="display-4 text-center">Login</legend>
-                <div class="row">
-                    <div class="col-4">
-                    </div>
-                    <div class="col-4 align-self-end">
-                        <div class="mb-1">
-                            <label for="Email" class="form-label">Email*</label>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                    </div>
-                    <div class="col-4">
-                        <div class="md-1">
-                            <input class="form-control form-control-sm" id="Email" name="Email" type="text" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                    </div>
-                    <div class="col-4 align-self-end">
-                        <div class="mb-1">
-                            <label for="Password" class="form-label">Password*</label>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                    </div>
-                    <div class="col-4">
-                        <div class="mb-1">
-                            <input class="form-control form-control-sm" id="Password" name="Password" type="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
+                            <legend class="display-4 text-center">Address</legend>
+                            <div class="row">
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="ZipCode" class="form-label">ZipCode*</label>
+                                    </div>
+                                </div>
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Address" class="form-label">Address*</label>
+                                    </div>
+                                </div>
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Number" class="form-label">Number*</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="ZipCode"
+                                               name="ZipCode"
+                                               type="text"
+                                               placeholder="ZipCode">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="Address"
+                                               name="Address"
+                                               type="text"
+                                               placeholder="Address">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="Number"
+                                               name="Number"
+                                               type="text"
+                                               placeholder="Number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Neighborhood" class="form-label">Neighborhood*</label>
+                                    </div>
+                                </div>
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="City" class="form-label">City*</label>
+                                    </div>
+                                </div>
+                                <div class="col align-self-end">
+                                    <div class="mb-1">
+                                        <label for="State" class="form-label">State*</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="Neighborhood"
+                                               name="Neighborhood"
+                                               type="text"
+                                               placeholder="Neighborhood">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm"
+                                               id="City"
+                                               name="City"
+                                               type="text"
+                                               placeholder="City">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <select class="form-select form-control form-control-sm"
+                                                id="State"
+                                                name="State">
+                                            <option selected>Selected</option>
+                                            <option value="SP">SP</option>
+                                            <option value="RJ">RJ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
-            </fieldset>
-        </form>
+                            <legend class="display-4 text-center">Login</legend>
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Email" class="form-label">Email*</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4">
+                                    <div class="md-1">
+                                        <input class="form-control form-control-sm" id="Email" name="Email" type="text" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4 align-self-end">
+                                    <div class="mb-1">
+                                        <label for="Password" class="form-label">Password*</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4">
+                                    <div class="mb-1">
+                                        <input class="form-control form-control-sm" id="Password" name="Password" type="password" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
 </div>
 
