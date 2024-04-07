@@ -3,42 +3,42 @@ using Ecomerce.Domain.SeedWork;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace Ecomerce.Infrastructure.Repository.Register
+namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
 {
-    public class RegisterRepository : BaseRepository, IRegisterRepository
+    public class PhysicalPersonRepository : BaseRepository, IPhysicalPersonRepository
     {
-        public RegisterRepository(ILogger logger) : base(logger) { }
+        public PhysicalPersonRepository(ILogger logger) : base(logger) { }
 
         public async Task DeleteAsync(int id)
         {
             try
             {
-                _logger.TraceEntry("Infrastructure_Register_DeleteAsync");
-                _commandText = "USP_Ecomerce_Register_Delete";
+                _logger.TraceEntry("Infrastructure_PhysicalPerson_DeleteAsync");
+                _commandText = "USP_Ecomerce_PhysicalPerson_Delete";
                 SqlConnection sqlConnection = new SqlConnection(_connectionString);
                 SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
-                GetRegisterDelete(sqlCommand, id);
+                GetPhysicalPersonDelete(sqlCommand, id);
                 sqlConnection.Open();
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 await sqlCommand.ExecuteNonQueryAsync();
                 sqlConnection.Close();
-                _logger.TraceExit("Infrastructure_Register_DeleteAsync");
+                _logger.TraceExit("Infrastructure_PhysicalPerson_DeleteAsync");
             }
             catch (ArgumentNullException ex)
             {
-                _logger.TraceException("Infrastructure_Register_DeleteAsync");
-                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade Register, método DeleteAsync, tipo assíncrono. " + ex.Message;
+                _logger.TraceException("Infrastructure_PhysicalPerson_DeleteAsync");
+                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade PhysicalPerson, método DeleteAsync, tipo assíncrono. " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
         }
 
-        public async Task<List<RegisterEntity>> GetAsync()
+        public async Task<List<PhysicalPersonEntity>> GetAsync()
         {
-            List<RegisterEntity> list = new List<RegisterEntity>();
+            List<PhysicalPersonEntity> list = new List<PhysicalPersonEntity>();
             try
             {
-                _logger.TraceEntry("Infrastructure_Register_GetAsync");
-                _commandText = "USP_Ecomerce_Register_Get";
+                _logger.TraceEntry("Infrastructure_PhysicalPerson_GetAsync");
+                _commandText = "USP_Ecomerce_PhysicalPerson_Get";
                 using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
@@ -47,28 +47,28 @@ namespace Ecomerce.Infrastructure.Repository.Register
                     SqlDataReader sqlDataReader = await sqlCommand.ExecuteReaderAsync();
                     while (sqlDataReader.Read())
                     {
-                        GetListRegister(sqlDataReader, list);
+                        GetListPhysicalPerson_PhysicalPerson(sqlDataReader, list);
                     }
                 }
-                _logger.TraceExit("Infrastructure_Register_GetAsync");
+                _logger.TraceExit("Infrastructure_PhysicalPerson_GetAsync");
 
             }
             catch (ArgumentNullException ex)
             {
-                _logger.TraceException("Infrastructure_Register_GetAsync");
-                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade Register, método Get, tipo assíncrono. " + ex.Message;
+                _logger.TraceException("Infrastructure_PhysicalPerson_GetAsync");
+                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade PhysicalPerson, método Get, tipo assíncrono. " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
             return list;
         }
 
-        public async Task<RegisterEntity> GetByIdAsync(int id)
+        public async Task<PhysicalPersonEntity> GetByIdAsync(int id)
         {
-            RegisterEntity entity = new RegisterEntity();
+            PhysicalPersonEntity entity = new PhysicalPersonEntity();
             try
             {
-                _logger.TraceEntry("Infrastructure_Register_GetByIdAsync");
-                _commandText = "USP_Ecomerce_Register_GetById";
+                _logger.TraceEntry("Infrastructure_PhysicalPerson_GetByIdAsync");
+                _commandText = "USP_Ecomerce_PhysicalPerson_GetById";
                 using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
@@ -78,98 +78,98 @@ namespace Ecomerce.Infrastructure.Repository.Register
                     SqlDataReader sqlDataReader = await sqlCommand.ExecuteReaderAsync();
                     while (sqlDataReader.Read())
                     {
-                        GetRegister(sqlDataReader, entity);
+                        GetPhysicalPerson_PhysicalPerson(sqlDataReader, entity);
                     }
                 }
-                _logger.TraceExit("Infrastructure_Register_GetByIdAsync");
+                _logger.TraceExit("Infrastructure_PhysicalPerson_GetByIdAsync");
             }
             catch (ArgumentNullException ex)
             {
-                _logger.TraceException("Infrastructure_Register_GetByIdAsync");
-                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade Register, método GetByIdAsync, tipo assíncrono. " + ex.Message;
+                _logger.TraceException("Infrastructure_PhysicalPerson_GetByIdAsync");
+                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade PhysicalPerson, método GetByIdAsync, tipo assíncrono. " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
             return entity;
         }
 
-        public async Task PostAsync(RegisterEntity entity)
+        public async Task PostAsync(PhysicalPersonEntity entity)
         {
             try
             {
-                _logger.TraceEntry("Infrastructure_Register_PostAsync");
-                _commandText = "USP_Ecomerce_Register_Post";
+                _logger.TraceEntry("Infrastructure_PhysicalPerson_PostAsync");
+                _commandText = "USP_Ecomerce_PhysicalPerson_Post";
                 SqlConnection sqlConnection = new SqlConnection(_connectionString);
                 SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
-                GetRegisterInsert(sqlCommand, entity);
+                GetPhysicalPersonInsert_PhysicalPerson(sqlCommand, entity);
                 sqlConnection.Open();
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 await sqlCommand.ExecuteNonQueryAsync();
                 sqlConnection.Close();
-                _logger.TraceExit("Infrastructure_Register_PostAsync");
+                _logger.TraceExit("Infrastructure_PhysicalPerson_PostAsync");
             }
             catch (ArgumentNullException ex)
             {
-                _logger.TraceException("Infrastructure_Register_PostAsync");
-                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade Register, método PostAsync, tipo síncrono. " + ex.Message;
+                _logger.TraceException("Infrastructure_PhysicalPerson_PostAsync");
+                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade PhysicalPerson, método PostAsync, tipo síncrono. " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
         }
 
-        public async Task PutAsync(RegisterEntity entity)
+        public async Task PutAsync(PhysicalPersonEntity entity)
         {
             try
             {
-                _logger.TraceEntry("Infrastructure_Register_PutAsync");
-                _commandText = "USP_Ecomerce_Register_Put";
+                _logger.TraceEntry("Infrastructure_PhysicalPerson_PutAsync");
+                _commandText = "USP_Ecomerce_PhysicalPerson_Put";
                 SqlConnection sqlConnection = new SqlConnection(_connectionString);
                 SqlCommand sqlCommand = new SqlCommand(_commandText, sqlConnection);
-                GetRegisterUpdate(sqlCommand, entity);
+                GetPhysicalPersonUpdate_PhysicalPerson(sqlCommand, entity);
                 sqlConnection.Open();
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 await sqlCommand.ExecuteNonQueryAsync();
                 sqlConnection.Close();
-                _logger.TraceExit("Infrastructure_Register_PutAsync");
+                _logger.TraceExit("Infrastructure_PhysicalPerson_PutAsync");
             }
             catch (ArgumentNullException ex)
             {
-                _logger.TraceException("Infrastructure_Register_PutAsync");
-                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade Register, método PutAsync, tipo assíncrono. " + ex.Message;
+                _logger.TraceException("Infrastructure_PhysicalPerson_PutAsync");
+                string mensagemErro = "Erro ao consumir a procedure " + _commandText + " , está na camada Infrastructure, Repository, entidade PhysicalPerson, método PutAsync, tipo assíncrono. " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
         }
 
         #region Helpers
 
-        private static void GetListRegister(SqlDataReader sqlDataReader, List<RegisterEntity> listVehicleRegisterModel)
+        private static void GetListPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, List<PhysicalPersonEntity> listVehiclePhysicalPersonModel)
         {
-            RegisterEntity registerEntity = new RegisterEntity();
-            GetRegister(sqlDataReader, registerEntity);
-            listVehicleRegisterModel.Add(registerEntity);
+            PhysicalPersonEntity physicalPersonEntity = new PhysicalPersonEntity();
+            GetPhysicalPerson_PhysicalPerson(sqlDataReader, physicalPersonEntity);
+            listVehiclePhysicalPersonModel.Add(physicalPersonEntity);
         }
 
-        private static void GetRegister(SqlDataReader sqlDataReader, RegisterEntity registerEntity)
+        private static void GetPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, PhysicalPersonEntity physicalPersonEntity)
         {
-            registerEntity.Id = Convert.ToInt32(sqlDataReader["Id"]);
-            registerEntity.FullName = Convert.ToString(sqlDataReader["FullName"]);
-            registerEntity.Gender = Convert.ToString(sqlDataReader["Gender"]);
-            registerEntity.DateOfBirth = Convert.ToString(sqlDataReader["DateOfBirth"]);
-            registerEntity.RegistrationOfIndividuals = Convert.ToString(sqlDataReader["RegistrationOfIndividuals"]);
-            registerEntity.Telephone = Convert.ToString(sqlDataReader["Telephone"]);
-            registerEntity.ZipCode = Convert.ToString(sqlDataReader["ZipCode"]);
-            registerEntity.Address = Convert.ToString(sqlDataReader["Address"]);
-            registerEntity.Number = Convert.ToString(sqlDataReader["Number"]);
-            registerEntity.Neighborhood = Convert.ToString(sqlDataReader["Neighborhood"]);
-            registerEntity.City = Convert.ToString(sqlDataReader["City"]);
-            registerEntity.State = Convert.ToString(sqlDataReader["State"]);
-            registerEntity.Email = Convert.ToString(sqlDataReader["Email"]);
-            registerEntity.Password = Convert.ToString(sqlDataReader["Password"]);
-            registerEntity.ConfirmedEmail = Convert.ToBoolean(sqlDataReader["ConfirmedEmail"]);
-            registerEntity.Status = Convert.ToBoolean(sqlDataReader["Status"]);
-            registerEntity.DateInsert = Convert.ToDateTime(sqlDataReader["DateInsert"]);
-            registerEntity.DateUpdate = Convert.ToDateTime(sqlDataReader["DateUpdate"]);
+            physicalPersonEntity.Id = Convert.ToInt32(sqlDataReader["Id"]);
+            physicalPersonEntity.FullName = Convert.ToString(sqlDataReader["FullName"]);
+            physicalPersonEntity.Gender = Convert.ToString(sqlDataReader["Gender"]);
+            physicalPersonEntity.DateOfBirth = Convert.ToString(sqlDataReader["DateOfBirth"]);
+            physicalPersonEntity.RegistrationOfIndividuals = Convert.ToString(sqlDataReader["RegistrationOfIndividuals"]);
+            physicalPersonEntity.Telephone = Convert.ToString(sqlDataReader["Telephone"]);
+            physicalPersonEntity.ZipCode = Convert.ToString(sqlDataReader["ZipCode"]);
+            physicalPersonEntity.Address = Convert.ToString(sqlDataReader["Address"]);
+            physicalPersonEntity.Number = Convert.ToString(sqlDataReader["Number"]);
+            physicalPersonEntity.Neighborhood = Convert.ToString(sqlDataReader["Neighborhood"]);
+            physicalPersonEntity.City = Convert.ToString(sqlDataReader["City"]);
+            physicalPersonEntity.State = Convert.ToString(sqlDataReader["State"]);
+            physicalPersonEntity.Email = Convert.ToString(sqlDataReader["Email"]);
+            physicalPersonEntity.Password = Convert.ToString(sqlDataReader["Password"]);
+            physicalPersonEntity.ConfirmedEmail = Convert.ToBoolean(sqlDataReader["ConfirmedEmail"]);
+            physicalPersonEntity.Status = Convert.ToBoolean(sqlDataReader["Status"]);
+            physicalPersonEntity.DateInsert = Convert.ToDateTime(sqlDataReader["DateInsert"]);
+            physicalPersonEntity.DateUpdate = Convert.ToDateTime(sqlDataReader["DateUpdate"]);
         }
 
-        private static void GetRegisterInsert(SqlCommand sqlCommand, RegisterEntity entity)
+        private static void GetPhysicalPersonInsert_PhysicalPerson(SqlCommand sqlCommand, PhysicalPersonEntity entity)
         {
             sqlCommand.Parameters.AddWithValue("@FullName", entity.FullName);
             sqlCommand.Parameters.AddWithValue("@Gender", entity.Gender);
@@ -190,7 +190,7 @@ namespace Ecomerce.Infrastructure.Repository.Register
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);
         }
 
-        private static void GetRegisterUpdate(SqlCommand sqlCommand, RegisterEntity entity)
+        private static void GetPhysicalPersonUpdate_PhysicalPerson(SqlCommand sqlCommand, PhysicalPersonEntity entity)
         {
             sqlCommand.Parameters.AddWithValue("@Id", entity.Id);
             sqlCommand.Parameters.AddWithValue("@FullName", entity.FullName);
@@ -212,12 +212,11 @@ namespace Ecomerce.Infrastructure.Repository.Register
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);
         }
 
-        private static void GetRegisterDelete(SqlCommand sqlCommand, int id)
+        private static void GetPhysicalPersonDelete(SqlCommand sqlCommand, int id)
         {
             sqlCommand.Parameters.AddWithValue("@Id", id);
         }
 
         #endregion
-
     }
 }
