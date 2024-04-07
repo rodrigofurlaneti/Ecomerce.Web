@@ -1,8 +1,8 @@
 > [!NOTE]
-> ![image](https://github.com/rodrigofurlaneti/Ecomerce.Web/blob/master/static/mvcs.png)
 > [MVCS][1] 
-> ![image](https://github.com/rodrigofurlaneti/Ecomerce.Web/blob/master/static/SupportServices.png)
+> ![image](https://github.com/rodrigofurlaneti/Ecomerce.Web/blob/master/static/mvcs.png)
 > [Hub do desenvolvedor][2] [Via cep][3]
+> ![image](https://github.com/rodrigofurlaneti/Ecomerce.Web/blob/master/static/SupportServices.png)
 
 > [!TIP]
 > [MVCS][1] [Hub do desenvolvedor][2] [Via cep][3]
