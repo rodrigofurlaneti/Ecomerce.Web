@@ -1,19 +1,19 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 
 namespace Ecomerce.Web.Helpers
 {
-    public static class LegalEntitiesHelper
+    public static class LegalHelper
     {
-        public static LegalEntitiesEntity DeparaViewToController_LegalEntities(IFormCollection iFormCollection)
+        public static Legal DeparaViewToController_Legal(IFormCollection iFormCollection)
         {
-            LegalEntitiesEntity registerEntity = new LegalEntitiesEntity();
+            Legal registerEntity = new Legal();
 
             foreach (var form in iFormCollection)
             {
 
-                if (form.Key.Equals("NationalRegisterOfLegalEntities"))
+                if (form.Key.Equals("NationalRegisterOfLegal"))
                 {
-                    registerEntity.NationalRegisterOfLegalEntities = form.Value;
+                    registerEntity.NationalRegisterOfLegal = form.Value;
                 }
                 else if (form.Key.Equals("CorporateReason"))
                 {

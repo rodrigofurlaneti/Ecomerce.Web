@@ -1,4 +1,4 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 using Ecomerce.Domain.SeedWork;
 using Ecomerce.Infrastructure.Repository.Profile;
 
@@ -40,7 +40,7 @@ namespace Ecomerce.Service.Service.Profile
             }
         }
 
-        public async Task<List<ProfileEntity>> GetAsync()
+        public async Task<List<Domain.Model.Profile>> GetAsync()
         {
             try
             {
@@ -57,7 +57,7 @@ namespace Ecomerce.Service.Service.Profile
             }
         }
 
-        public async Task<ProfileEntity> GetByIdAsync(int id)
+        public async Task<Domain.Model.Profile> GetByIdAsync(int id)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace Ecomerce.Service.Service.Profile
             }
         }
 
-        public async Task PostAsync(ProfileEntity entity)
+        public async Task PostAsync(Domain.Model.Profile entity)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace Ecomerce.Service.Service.Profile
             }
         }
 
-        public async Task PutAsync(ProfileEntity entity)
+        public async Task PutAsync(Domain.Model.Profile entity)
         {
             try
             {

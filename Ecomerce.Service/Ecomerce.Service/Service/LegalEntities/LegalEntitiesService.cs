@@ -1,23 +1,23 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 using Ecomerce.Domain.SeedWork;
-using Ecomerce.Infrastructure.Repository.LegalEntities;
+using Ecomerce.Infrastructure.Repository.Legal;
 
-namespace Ecomerce.Service.Service.LegalEntities
+namespace Ecomerce.Service.Service.Legal
 {
-    public class LegalEntitiesService : BaseService, ILegalEntitiesService
+    public class LegalService : BaseService, ILegalService
     {
         #region Property
 
-        public readonly ILegalEntitiesRepository _legalEntitiesRepository;
+        public readonly ILegalRepository _legalRepository;
 
 
         #endregion
 
         #region Constructor
 
-        public LegalEntitiesService(ILogger logger, ILegalEntitiesRepository legalEntitiesRepository) : base(logger)
+        public LegalService(ILogger logger, ILegalRepository LegalRepository) : base(logger)
         {
-            _legalEntitiesRepository = legalEntitiesRepository;
+            _legalRepository = LegalRepository;
         }
 
         #endregion
@@ -28,80 +28,80 @@ namespace Ecomerce.Service.Service.LegalEntities
         {
             try
             {
-                this._logger.TraceEntry("Service_LegalEntities_DeleteAsync");
-                await _legalEntitiesRepository.DeleteAsync(id);
-                this._logger.TraceExit("Service_LegalEntities_DeleteAsync");
+                this._logger.TraceEntry("Service_Legal_DeleteAsync");
+                await _legalRepository.DeleteAsync(id);
+                this._logger.TraceExit("Service_Legal_DeleteAsync");
             }
             catch (ArgumentNullException ex)
             {
-                this._logger.TraceException("Service_LegalEntities_Delete");
-                string mensagemErro = "Erro ao consumir a camada Service, entidade LegalEntities, método DeleteAsync, tipo assíncrono " + ex.Message;
+                this._logger.TraceException("Service_Legal_Delete");
+                string mensagemErro = "Erro ao consumir a camada Service, entidade Legal, método DeleteAsync, tipo assíncrono " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
         }
 
-        public async Task<List<LegalEntitiesEntity>> GetAsync()
+        public async Task<List<Domain.Model.Legal>> GetAsync()
         {
             try
             {
-                this._logger.TraceEntry("Service_LegalEntities_GetAsync");
-                var ret = await _legalEntitiesRepository.GetAsync();
-                this._logger.TraceExit("Service_LegalEntities_GetAsync");
+                this._logger.TraceEntry("Service_Legal_GetAsync");
+                var ret = await _legalRepository.GetAsync();
+                this._logger.TraceExit("Service_Legal_GetAsync");
                 return ret;
             }
             catch (ArgumentNullException ex)
             {
-                this._logger.TraceException("Service_LegalEntities_GetAsync");
-                string mensagemErro = "Erro ao consumir a camada Service, entidade LegalEntities, método GetAsync, tipo assíncrono " + ex.Message;
+                this._logger.TraceException("Service_Legal_GetAsync");
+                string mensagemErro = "Erro ao consumir a camada Service, entidade Legal, método GetAsync, tipo assíncrono " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
         }
 
-        public async Task<LegalEntitiesEntity> GetByIdAsync(int id)
+        public async Task<Domain.Model.Legal> GetByIdAsync(int id)
         {
             try
             {
-                this._logger.TraceEntry("Service_LegalEntities_GetByIdAsync");
-                var ret = await _legalEntitiesRepository.GetByIdAsync(id);
-                this._logger.TraceExit("Service_LegalEntities_GetByIdAsync");
+                this._logger.TraceEntry("Service_Legal_GetByIdAsync");
+                var ret = await _legalRepository.GetByIdAsync(id);
+                this._logger.TraceExit("Service_Legal_GetByIdAsync");
                 return ret;
             }
             catch (ArgumentNullException ex)
             {
-                this._logger.TraceException("Service_LegalEntities_GetByIdAsync");
-                string mensagemErro = "Erro ao consumir a camada Service, entidade LegalEntities, método GetByIdAsync, tipo assíncrono " + ex.Message;
+                this._logger.TraceException("Service_Legal_GetByIdAsync");
+                string mensagemErro = "Erro ao consumir a camada Service, entidade Legal, método GetByIdAsync, tipo assíncrono " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
         }
 
-        public async Task PostAsync(LegalEntitiesEntity entity)
+        public async Task PostAsync(Domain.Model.Legal entity)
         {
             try
             {
-                this._logger.TraceEntry("Service_LegalEntities_PostAsync");
-                await _legalEntitiesRepository.PostAsync(entity);
-                this._logger.TraceExit("Service_LegalEntities_PostAsync");
+                this._logger.TraceEntry("Service_Legal_PostAsync");
+                await _legalRepository.PostAsync(entity);
+                this._logger.TraceExit("Service_Legal_PostAsync");
             }
             catch (ArgumentNullException ex)
             {
-                this._logger.TraceException("Service_LegalEntities_PostAsync");
-                string mensagemErro = "Erro ao consumir a camada Service, entidade LegalEntities, método PostAsync, tipo assíncrono " + ex.Message;
+                this._logger.TraceException("Service_Legal_PostAsync");
+                string mensagemErro = "Erro ao consumir a camada Service, entidade Legal, método PostAsync, tipo assíncrono " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
         }
 
-        public async Task PutAsync(LegalEntitiesEntity entity)
+        public async Task PutAsync(Domain.Model.Legal entity)
         {
             try
             {
-                this._logger.TraceEntry("Service_LegalEntities_PutAsync");
-                await _legalEntitiesRepository.PutAsync(entity);
-                this._logger.TraceExit("Service_LegalEntities_PutAsync");
+                this._logger.TraceEntry("Service_Legal_PutAsync");
+                await _legalRepository.PutAsync(entity);
+                this._logger.TraceExit("Service_Legal_PutAsync");
             }
             catch (ArgumentNullException ex)
             {
-                this._logger.TraceException("Service_LegalEntities_PutAsync");
-                string mensagemErro = "Erro ao consumir a camada Service, entidade LegalEntities, método PutAsync, tipo assíncrono " + ex.Message;
+                this._logger.TraceException("Service_Legal_PutAsync");
+                string mensagemErro = "Erro ao consumir a camada Service, entidade Legal, método PutAsync, tipo assíncrono " + ex.Message;
                 throw new ArgumentNullException(mensagemErro);
             }
         }

@@ -1,4 +1,4 @@
-﻿namespace Ecomerce.Domain.Entities
+﻿namespace Ecomerce.Domain.Model
 {
     public class AppSettings
     {

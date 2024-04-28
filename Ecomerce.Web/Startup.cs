@@ -1,6 +1,7 @@
-﻿using Ecomerce.Web.Helpers;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using Ecomerce.Web.Context;
+using Ecomerce.Web.Helpers;
+using Ecomerce.Web.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecomerce.Web;
     public class Startup : IStartup
@@ -13,6 +14,16 @@ namespace Ecomerce.Web;
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
+            services.AddDbContext<ApplicationDbContext>(option => option
+                    .UseSqlServer(Configuration.GetSection("ConnectionString")["DefaultConnection"]));
+
             services.AddHttpContextAccessor();
 
             services.AddOptions();
@@ -21,8 +32,8 @@ namespace Ecomerce.Web;
             
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             
-            services.AddScoped(sp => ShoppingCartHelper.GetShoppingCart(sp));
-            
+            services.AddScoped(sp => ShoppingCart.GetShoppingCart(sp));
+
             services.AddControllersWithViews();
 
             services.AddMemoryCache();

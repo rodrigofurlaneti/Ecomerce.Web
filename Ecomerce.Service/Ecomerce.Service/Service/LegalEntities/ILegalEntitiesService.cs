@@ -1,8 +1,8 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 
-namespace Ecomerce.Service.Service.LegalEntities
+namespace Ecomerce.Service.Service.Legal
 {
-    public interface ILegalEntitiesService : IService<LegalEntitiesEntity>
+    public interface ILegalService : IService<Domain.Model.Legal>
     {
     }
 }

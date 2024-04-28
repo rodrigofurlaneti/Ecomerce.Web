@@ -1,14 +1,14 @@
-﻿using Ecomerce.Service.Service.LegalEntities;
+﻿using Ecomerce.Service.Service.Legal;
 using Ecomerce.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecomerce.Web.Controllers
 {
-    public class LegalEntitiesController : Controller
+    public class LegalController : Controller
     {
-        private readonly ILegalEntitiesService _registerService;
+        private readonly ILegalService _registerService;
 
-        public LegalEntitiesController(ILegalEntitiesService registerService)
+        public LegalController(ILegalService registerService)
         {
             this._registerService = registerService;
         }
@@ -19,15 +19,15 @@ namespace Ecomerce.Web.Controllers
         }
 
 
-        [Route("ActivateYourRegistration_LegalEntities")]
+        [Route("ActivateYourRegistration_Legal")]
         [HttpPost]
-        public async Task<IActionResult> ActivateYourRegistration_LegalEntities()
+        public async Task<IActionResult> ActivateYourRegistration_Legal()
         {
             var modelFormCollection = Request.Form;
 
             if (modelFormCollection != null)
             {
-                var model = LegalEntitiesHelper.DeparaViewToController_LegalEntities(modelFormCollection);
+                var model = LegalHelper.DeparaViewToController_Legal(modelFormCollection);
 
                 await _registerService.PostAsync(model);
             }

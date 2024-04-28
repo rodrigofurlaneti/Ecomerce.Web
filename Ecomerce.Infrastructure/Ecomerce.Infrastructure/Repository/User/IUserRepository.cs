@@ -1,8 +1,8 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 
 namespace Ecomerce.Infrastructure.Repository.User
 {
-    public interface IUserRepository : IRepository<UserEntity>
+    public interface IUserRepository : IRepository<Domain.Model.User>
     {
     }
 }

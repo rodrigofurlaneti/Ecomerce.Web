@@ -1,4 +1,4 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 using Ecomerce.Domain.SeedWork;
 using System;
 using System.Collections.Generic;
@@ -37,9 +37,9 @@ namespace Ecomerce.Infrastructure.Repository.User
             }
         }
 
-        public async Task<List<UserEntity>> GetAsync()
+        public async Task<List<Domain.Model.User>> GetAsync()
         {
-            List<UserEntity> list = new List<UserEntity>();
+            List<Domain.Model.User> list = new List<Domain.Model.User>();
             try
             {
                 _logger.TraceEntry("Infrastructure_User_GetAsync");
@@ -67,9 +67,9 @@ namespace Ecomerce.Infrastructure.Repository.User
             return list;
         }
 
-        public async Task<UserEntity> GetByIdAsync(int id)
+        public async Task<Domain.Model.User> GetByIdAsync(int id)
         {
-            UserEntity entity = new UserEntity();
+            Domain.Model.User entity = new Domain.Model.User();
             try
             {
                 _logger.TraceEntry("Infrastructure_User_GetByIdAsync");
@@ -97,7 +97,7 @@ namespace Ecomerce.Infrastructure.Repository.User
             return entity;
         }
 
-        public async Task PostAsync(UserEntity entity)
+        public async Task PostAsync(Domain.Model.User entity)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace Ecomerce.Infrastructure.Repository.User
             }
         }
 
-        public async Task PutAsync(UserEntity entity)
+        public async Task PutAsync(Domain.Model.User entity)
         {
             try
             {
@@ -145,38 +145,38 @@ namespace Ecomerce.Infrastructure.Repository.User
 
         #region Helpers
 
-        private static void GetListUser(SqlDataReader sqlDataReader, List<UserEntity> listVehicleUserModel)
+        private static void GetListUser(SqlDataReader sqlDataReader, List<Domain.Model.User> listVehicleUserModel)
         {
-            UserEntity userModel = new UserEntity();
+            Domain.Model.User userModel = new Domain.Model.User();
             GetUser(sqlDataReader, userModel);
             listVehicleUserModel.Add(userModel);
         }
 
-        private static void GetUser(SqlDataReader sqlDataReader, UserEntity userModel)
+        private static void GetUser(SqlDataReader sqlDataReader, Domain.Model.User userModel)
         {
-            userModel.Profile = new ProfileEntity();
+            userModel.Profile = new Domain.Model.Profile();
             userModel.Id = Convert.ToInt32(sqlDataReader["Id"]);
             userModel.Name = Convert.ToString(sqlDataReader["Name"]);
-            userModel.Profile.Id = Convert.ToInt32(sqlDataReader["IdProfile"]);
+            userModel.Profile.ProfileId = Convert.ToInt32(sqlDataReader["IdProfile"]);
             userModel.Status = Convert.ToBoolean(sqlDataReader["Status"]);
             userModel.DateInsert = Convert.ToDateTime(sqlDataReader["DateInsert"]);
             userModel.DateUpdate = Convert.ToDateTime(sqlDataReader["DateUpdate"]);
         }
 
-        private static void GetUserInsert(SqlCommand sqlCommand, UserEntity entity)
+        private static void GetUserInsert(SqlCommand sqlCommand, Domain.Model.User entity)
         {
             sqlCommand.Parameters.AddWithValue("@Name", entity.Name);
-            sqlCommand.Parameters.AddWithValue("@IdProfile", entity.Profile.Id);
+            sqlCommand.Parameters.AddWithValue("@IdProfile", entity.Profile.ProfileId);
             sqlCommand.Parameters.AddWithValue("@Status", entity.Status);
             sqlCommand.Parameters.AddWithValue("@DateInsert", entity.DateInsert);
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);
         }
 
-        private static void GetUserUpdate(SqlCommand sqlCommand, UserEntity entity)
+        private static void GetUserUpdate(SqlCommand sqlCommand, Domain.Model.User entity)
         {
             sqlCommand.Parameters.AddWithValue("@Id", entity.Id);
             sqlCommand.Parameters.AddWithValue("@Name", entity.Name);
-            sqlCommand.Parameters.AddWithValue("@IdProfile", entity.Profile.Id);
+            sqlCommand.Parameters.AddWithValue("@IdProfile", entity.Profile.ProfileId);
             sqlCommand.Parameters.AddWithValue("@Status", entity.Status);
             sqlCommand.Parameters.AddWithValue("@DateInsert", entity.DateInsert);
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);

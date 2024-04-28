@@ -1,8 +1,8 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 
 namespace Ecomerce.Service.Service.PhysicalPerson
 {
-    public interface IPhysicalPersonService : IService<PhysicalPersonEntity>
+    public interface IPhysicalPersonService : IService<Domain.Model.PhysicalPerson>
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 using Ecomerce.Domain.SeedWork;
 using System.Data.SqlClient;
 using System.Data;
@@ -32,9 +32,9 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             }
         }
 
-        public async Task<List<PhysicalPersonEntity>> GetAsync()
+        public async Task<List<Domain.Model.PhysicalPerson>> GetAsync()
         {
-            List<PhysicalPersonEntity> list = new List<PhysicalPersonEntity>();
+            List<Domain.Model.PhysicalPerson> list = new List<Domain.Model.PhysicalPerson>();
             try
             {
                 _logger.TraceEntry("Infrastructure_PhysicalPerson_GetAsync");
@@ -62,9 +62,9 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             return list;
         }
 
-        public async Task<PhysicalPersonEntity> GetByIdAsync(int id)
+        public async Task<Domain.Model.PhysicalPerson> GetByIdAsync(int id)
         {
-            PhysicalPersonEntity entity = new PhysicalPersonEntity();
+            Domain.Model.PhysicalPerson entity = new Domain.Model.PhysicalPerson();
             try
             {
                 _logger.TraceEntry("Infrastructure_PhysicalPerson_GetByIdAsync");
@@ -92,7 +92,7 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             return entity;
         }
 
-        public async Task PostAsync(PhysicalPersonEntity entity)
+        public async Task PostAsync(Domain.Model.PhysicalPerson entity)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             }
         }
 
-        public async Task PutAsync(PhysicalPersonEntity entity)
+        public async Task PutAsync(Domain.Model.PhysicalPerson entity)
         {
             try
             {
@@ -140,16 +140,16 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
 
         #region Helpers
 
-        private static void GetListPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, List<PhysicalPersonEntity> listVehiclePhysicalPersonModel)
+        private static void GetListPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, List<Domain.Model.PhysicalPerson> listVehiclePhysicalPersonModel)
         {
-            PhysicalPersonEntity physicalPersonEntity = new PhysicalPersonEntity();
+            Domain.Model.PhysicalPerson physicalPersonEntity = new Domain.Model.PhysicalPerson();
             GetPhysicalPerson_PhysicalPerson(sqlDataReader, physicalPersonEntity);
             listVehiclePhysicalPersonModel.Add(physicalPersonEntity);
         }
 
-        private static void GetPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, PhysicalPersonEntity physicalPersonEntity)
+        private static void GetPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, Domain.Model.PhysicalPerson physicalPersonEntity)
         {
-            physicalPersonEntity.Id = Convert.ToInt32(sqlDataReader["Id"]);
+            physicalPersonEntity.PhysicalPersonId = Convert.ToInt32(sqlDataReader["Id"]);
             physicalPersonEntity.FullName = Convert.ToString(sqlDataReader["FullName"]);
             physicalPersonEntity.Gender = Convert.ToString(sqlDataReader["Gender"]);
             physicalPersonEntity.DateOfBirth = Convert.ToString(sqlDataReader["DateOfBirth"]);
@@ -169,7 +169,7 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             physicalPersonEntity.DateUpdate = Convert.ToDateTime(sqlDataReader["DateUpdate"]);
         }
 
-        private static void GetPhysicalPersonInsert_PhysicalPerson(SqlCommand sqlCommand, PhysicalPersonEntity entity)
+        private static void GetPhysicalPersonInsert_PhysicalPerson(SqlCommand sqlCommand, Domain.Model.PhysicalPerson entity)
         {
             sqlCommand.Parameters.AddWithValue("@FullName", entity.FullName);
             sqlCommand.Parameters.AddWithValue("@Gender", entity.Gender);
@@ -190,9 +190,9 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);
         }
 
-        private static void GetPhysicalPersonUpdate_PhysicalPerson(SqlCommand sqlCommand, PhysicalPersonEntity entity)
+        private static void GetPhysicalPersonUpdate_PhysicalPerson(SqlCommand sqlCommand, Domain.Model.PhysicalPerson entity)
         {
-            sqlCommand.Parameters.AddWithValue("@Id", entity.Id);
+            sqlCommand.Parameters.AddWithValue("@Id", entity.PhysicalPersonId);
             sqlCommand.Parameters.AddWithValue("@FullName", entity.FullName);
             sqlCommand.Parameters.AddWithValue("@Gender", entity.Gender);
             sqlCommand.Parameters.AddWithValue("@DateOfBirth", entity.DateOfBirth);

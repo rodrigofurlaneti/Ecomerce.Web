@@ -1,10 +1,8 @@
-﻿namespace Ecomerce.Domain.Entities
+﻿namespace Ecomerce.Domain.Model
 {
-    public class BaseEntity
+    public class Base
     {
-        public int Id { get; set; }
         public int IdUser { get; set; }
-        public string? Name { get; set; }
         public bool Status { get; set; }
         public DateTime DateInsert { get; set; }
         public DateTime DateUpdate { get; set; }

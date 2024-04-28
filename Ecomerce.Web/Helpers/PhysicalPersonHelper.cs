@@ -1,12 +1,12 @@
-﻿using Ecomerce.Domain.Entities;
+﻿using Ecomerce.Domain.Model;
 
 namespace Ecomerce.Web.Helpers
 {
     public static class PhysicalPersonHelper
     {
-        public static PhysicalPersonEntity DeparaViewToController_PhysicalPerson(IFormCollection iFormCollection)
+        public static PhysicalPerson DeparaViewToController_PhysicalPerson(IFormCollection iFormCollection)
         {
-            PhysicalPersonEntity registerEntity = new PhysicalPersonEntity();
+            PhysicalPerson registerEntity = new PhysicalPerson();
 
             foreach (var form in iFormCollection)
             {

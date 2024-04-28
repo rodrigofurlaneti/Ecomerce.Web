@@ -75,7 +75,7 @@ $(document).ready(function () {
         $("#Members").val("");
     }
 
-    $("#NationalRegisterOfLegalEntities").blur(function () {
+    $("#NationalRegisterOfLegal").blur(function () {
 
         var cnpj = $(this).val().replace(/\D/g, '');
 

@@ -1,6 +1,4 @@
-﻿using Ecomerce.Domain.Entities;
-using Ecomerce.Service.Service;
-using Ecomerce.Web.Helpers;
+﻿using Ecomerce.Web.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecomerce.Web.Controllers
@@ -8,11 +6,13 @@ namespace Ecomerce.Web.Controllers
     public class ShoppingCartController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ShoppingCartHelper _shoppingCartHelper;
-        public ShoppingCartController(ILogger<HomeController> logger, ShoppingCartHelper shoppingCartHelper)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ShoppingCart _shoppingCart;
+        public ShoppingCartController(ILogger<HomeController> logger,
+            ShoppingCart shoppingCart)
         {
             _logger = logger;
-            _shoppingCartHelper = shoppingCartHelper;
+            _shoppingCart = shoppingCart;
         }
 
         public IActionResult Index()
