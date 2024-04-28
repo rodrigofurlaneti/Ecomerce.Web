@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace Ecomerce.Domain.Model
+namespace Ecomerce.Domain.Models
 {
     [Table("Product")]
     public class Product

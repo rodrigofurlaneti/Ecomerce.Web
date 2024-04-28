@@ -1,5 +1,4 @@
-﻿using Ecomerce.Domain.Model;
-using Ecomerce.Domain.SeedWork;
+﻿using Ecomerce.Domain.SeedWork;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -32,9 +31,9 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             }
         }
 
-        public async Task<List<Domain.Model.PhysicalPerson>> GetAsync()
+        public async Task<List<Domain.Models.PhysicalPerson>> GetAsync()
         {
-            List<Domain.Model.PhysicalPerson> list = new List<Domain.Model.PhysicalPerson>();
+            List<Domain.Models.PhysicalPerson> list = new List<Domain.Models.PhysicalPerson>();
             try
             {
                 _logger.TraceEntry("Infrastructure_PhysicalPerson_GetAsync");
@@ -62,9 +61,9 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             return list;
         }
 
-        public async Task<Domain.Model.PhysicalPerson> GetByIdAsync(int id)
+        public async Task<Domain.Models.PhysicalPerson> GetByIdAsync(int id)
         {
-            Domain.Model.PhysicalPerson entity = new Domain.Model.PhysicalPerson();
+            Domain.Models.PhysicalPerson entity = new Domain.Models.PhysicalPerson();
             try
             {
                 _logger.TraceEntry("Infrastructure_PhysicalPerson_GetByIdAsync");
@@ -92,7 +91,7 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             return entity;
         }
 
-        public async Task PostAsync(Domain.Model.PhysicalPerson entity)
+        public async Task PostAsync(Domain.Models.PhysicalPerson entity)
         {
             try
             {
@@ -115,7 +114,7 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             }
         }
 
-        public async Task PutAsync(Domain.Model.PhysicalPerson entity)
+        public async Task PutAsync(Domain.Models.PhysicalPerson entity)
         {
             try
             {
@@ -140,14 +139,14 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
 
         #region Helpers
 
-        private static void GetListPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, List<Domain.Model.PhysicalPerson> listVehiclePhysicalPersonModel)
+        private static void GetListPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, List<Domain.Models.PhysicalPerson> listVehiclePhysicalPersonModel)
         {
-            Domain.Model.PhysicalPerson physicalPersonEntity = new Domain.Model.PhysicalPerson();
+            Domain.Models.PhysicalPerson physicalPersonEntity = new Domain.Models.PhysicalPerson();
             GetPhysicalPerson_PhysicalPerson(sqlDataReader, physicalPersonEntity);
             listVehiclePhysicalPersonModel.Add(physicalPersonEntity);
         }
 
-        private static void GetPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, Domain.Model.PhysicalPerson physicalPersonEntity)
+        private static void GetPhysicalPerson_PhysicalPerson(SqlDataReader sqlDataReader, Domain.Models.PhysicalPerson physicalPersonEntity)
         {
             physicalPersonEntity.PhysicalPersonId = Convert.ToInt32(sqlDataReader["Id"]);
             physicalPersonEntity.FullName = Convert.ToString(sqlDataReader["FullName"]);
@@ -169,7 +168,7 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             physicalPersonEntity.DateUpdate = Convert.ToDateTime(sqlDataReader["DateUpdate"]);
         }
 
-        private static void GetPhysicalPersonInsert_PhysicalPerson(SqlCommand sqlCommand, Domain.Model.PhysicalPerson entity)
+        private static void GetPhysicalPersonInsert_PhysicalPerson(SqlCommand sqlCommand, Domain.Models.PhysicalPerson entity)
         {
             sqlCommand.Parameters.AddWithValue("@FullName", entity.FullName);
             sqlCommand.Parameters.AddWithValue("@Gender", entity.Gender);
@@ -190,7 +189,7 @@ namespace Ecomerce.Infrastructure.Repository.PhysicalPerson
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);
         }
 
-        private static void GetPhysicalPersonUpdate_PhysicalPerson(SqlCommand sqlCommand, Domain.Model.PhysicalPerson entity)
+        private static void GetPhysicalPersonUpdate_PhysicalPerson(SqlCommand sqlCommand, Domain.Models.PhysicalPerson entity)
         {
             sqlCommand.Parameters.AddWithValue("@Id", entity.PhysicalPersonId);
             sqlCommand.Parameters.AddWithValue("@FullName", entity.FullName);

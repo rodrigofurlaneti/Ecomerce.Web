@@ -1,5 +1,4 @@
-﻿using Ecomerce.Domain.Model;
-using Ecomerce.Domain.SeedWork;
+﻿using Ecomerce.Domain.SeedWork;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -60,9 +59,9 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             }
         }
 
-        public List<Domain.Model.Profile> Get()
+        public List<Domain.Models.Profile> Get()
         {
-            List<Domain.Model.Profile> list = new List<Domain.Model.Profile>();
+            List<Domain.Models.Profile> list = new List<Domain.Models.Profile>();
             try
             {
                 _logger.TraceEntry("Infrastructure_Profile_Get");
@@ -90,9 +89,9 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             return list;
         }
 
-        public async Task<List<Domain.Model.Profile>> GetAsync()
+        public async Task<List<Domain.Models.Profile>> GetAsync()
         {
-            List<Domain.Model.Profile> list = new List<Domain.Model.Profile>();
+            List<Domain.Models.Profile> list = new List<Domain.Models.Profile>();
             try
             {
                 _logger.TraceEntry("Infrastructure_Profile_GetAsync");
@@ -120,9 +119,9 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             return list;
         }
 
-        public Domain.Model.Profile GetById(int id)
+        public Domain.Models.Profile GetById(int id)
         {
-            Domain.Model.Profile entity = new Domain.Model.Profile();
+            Domain.Models.Profile entity = new Domain.Models.Profile();
             try
             {
                 _logger.TraceEntry("Infrastructure_Profile_GetById");
@@ -150,9 +149,9 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             return entity;
         }
 
-        public async Task<Domain.Model.Profile> GetByIdAsync(int id)
+        public async Task<Domain.Models.Profile> GetByIdAsync(int id)
         {
-            Domain.Model.Profile entity = new Domain.Model.Profile();
+            Domain.Models.Profile entity = new Domain.Models.Profile();
             try
             {
                 _logger.TraceEntry("Infrastructure_Profile_GetByIdAsync");
@@ -180,7 +179,7 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             return entity;
         }
 
-        public void Post(Domain.Model.Profile entity)
+        public void Post(Domain.Models.Profile entity)
         {
             try
             {
@@ -203,7 +202,7 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             }
         }
 
-        public async Task PostAsync(Domain.Model.Profile entity)
+        public async Task PostAsync(Domain.Models.Profile entity)
         {
             try
             {
@@ -226,7 +225,7 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             }
         }
 
-        public void Put(Domain.Model.Profile entity)
+        public void Put(Domain.Models.Profile entity)
         {
             try
             {
@@ -249,7 +248,7 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             }
         }
 
-        public async Task PutAsync(Domain.Model.Profile entity)
+        public async Task PutAsync(Domain.Models.Profile entity)
         {
             try
             {
@@ -274,14 +273,14 @@ namespace Ecomerce.Infrastructure.Repository.Profile
 
         #region Helpers
 
-        private static void GetListProfile(SqlDataReader sqlDataReader, List<Domain.Model.Profile> listVehicleProfileModel)
+        private static void GetListProfile(SqlDataReader sqlDataReader, List<Domain.Models.Profile> listVehicleProfileModel)
         {
-            Domain.Model.Profile brandModel = new Domain.Model.Profile();
+            Domain.Models.Profile brandModel = new Domain.Models.Profile();
             GetProfile(sqlDataReader, brandModel);
             listVehicleProfileModel.Add(brandModel);
         }
 
-        private static void GetProfile(SqlDataReader sqlDataReader, Domain.Model.Profile brandModel)
+        private static void GetProfile(SqlDataReader sqlDataReader, Domain.Models.Profile brandModel)
         {
             brandModel.ProfileId = Convert.ToInt32(sqlDataReader["Id"]);
             brandModel.IdUser = Convert.ToInt32(sqlDataReader["IdUser"]);
@@ -291,7 +290,7 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             brandModel.DateUpdate = Convert.ToDateTime(sqlDataReader["DateUpdate"]);
         }
 
-        private static void GetProfileInsert(SqlCommand sqlCommand, Domain.Model.Profile entity)
+        private static void GetProfileInsert(SqlCommand sqlCommand, Domain.Models.Profile entity)
         {
             sqlCommand.Parameters.AddWithValue("@IdUser", entity.IdUser);
             sqlCommand.Parameters.AddWithValue("@Name", entity.Name);
@@ -300,7 +299,7 @@ namespace Ecomerce.Infrastructure.Repository.Profile
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);
         }
 
-        private static void GetProfileUpdate(SqlCommand sqlCommand, Domain.Model.Profile entity)
+        private static void GetProfileUpdate(SqlCommand sqlCommand, Domain.Models.Profile entity)
         {
             sqlCommand.Parameters.AddWithValue("@Id", entity.ProfileId);
             sqlCommand.Parameters.AddWithValue("@IdUser", entity.IdUser);

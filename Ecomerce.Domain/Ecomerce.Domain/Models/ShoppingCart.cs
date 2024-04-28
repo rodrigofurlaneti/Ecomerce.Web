@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ecomerce.Domain.Model
+namespace Ecomerce.Domain.Models
 {
     [Table("ShoppingCart")]
     public class ShoppingCart
@@ -11,7 +11,5 @@ namespace Ecomerce.Domain.Model
 
 
         public List<CartPurchaseItem>? CartPurchaseItems { get; set; }
-
-
     }
 }

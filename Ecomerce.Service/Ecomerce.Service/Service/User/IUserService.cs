@@ -1,8 +1,6 @@
-﻿using Ecomerce.Domain.Model;
-
-namespace Ecomerce.Service.Service.User
+﻿namespace Ecomerce.Service.Service.User
 {
-    public interface IUserService : IService<Domain.Model.User>
+    public interface IUserService : IService<Domain.Models.User>
     {
     }
 }

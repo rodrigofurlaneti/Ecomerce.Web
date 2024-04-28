@@ -1,5 +1,4 @@
-﻿using Ecomerce.Domain.Model;
-using Ecomerce.Domain.SeedWork;
+﻿using Ecomerce.Domain.SeedWork;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -32,9 +31,9 @@ namespace Ecomerce.Infrastructure.Repository.Legal
             }
         }
 
-        public async Task<List<Domain.Model.Legal>> GetAsync()
+        public async Task<List<Domain.Models.Legal>> GetAsync()
         {
-            List<Domain.Model.Legal> list = new List<Domain.Model.Legal>();
+            List<Domain.Models.Legal> list = new List<Domain.Models.Legal>();
             try
             {
                 _logger.TraceEntry("Infrastructure_Legal_GetAsync");
@@ -62,9 +61,9 @@ namespace Ecomerce.Infrastructure.Repository.Legal
             return list;
         }
 
-        public async Task<Domain.Model.Legal> GetByIdAsync(int id)
+        public async Task<Domain.Models.Legal> GetByIdAsync(int id)
         {
-            Domain.Model.Legal entity = new Domain.Model.Legal();
+            Domain.Models.Legal entity = new Domain.Models.Legal();
             try
             {
                 _logger.TraceEntry("Infrastructure_Legal_GetByIdAsync");
@@ -92,7 +91,7 @@ namespace Ecomerce.Infrastructure.Repository.Legal
             return entity;
         }
 
-        public async Task PostAsync(Domain.Model.Legal entity)
+        public async Task PostAsync(Domain.Models.Legal entity)
         {
             try
             {
@@ -115,7 +114,7 @@ namespace Ecomerce.Infrastructure.Repository.Legal
             }
         }
 
-        public async Task PutAsync(Domain.Model.Legal entity)
+        public async Task PutAsync(Domain.Models.Legal entity)
         {
             try
             {
@@ -140,14 +139,14 @@ namespace Ecomerce.Infrastructure.Repository.Legal
 
         #region Helpers
 
-        private static void GetListLegal_Legal(SqlDataReader sqlDataReader, List<Domain.Model.Legal> listVehicleLegal)
+        private static void GetListLegal_Legal(SqlDataReader sqlDataReader, List<Domain.Models.Legal> listVehicleLegal)
         {
-            Domain.Model.Legal LegalEntity = new Domain.Model.Legal();
+            Domain.Models.Legal LegalEntity = new Domain.Models.Legal();
             GetLegal_Legal(sqlDataReader, LegalEntity);
             listVehicleLegal.Add(LegalEntity);
         }
 
-        private static void GetLegal_Legal(SqlDataReader sqlDataReader, Domain.Model.Legal LegalEntity)
+        private static void GetLegal_Legal(SqlDataReader sqlDataReader, Domain.Models.Legal LegalEntity)
         {
             LegalEntity.LegalId = Convert.ToInt32(sqlDataReader["Id"]);
             LegalEntity.CorporateReason = Convert.ToString(sqlDataReader["CorporateReason"]);
@@ -170,7 +169,7 @@ namespace Ecomerce.Infrastructure.Repository.Legal
             LegalEntity.DateUpdate = Convert.ToDateTime(sqlDataReader["DateUpdate"]);
         }
 
-        private static void GetLegalInsert_Legal(SqlCommand sqlCommand, Domain.Model.Legal entity)
+        private static void GetLegalInsert_Legal(SqlCommand sqlCommand, Domain.Models.Legal entity)
         {
             sqlCommand.Parameters.AddWithValue("@NationalRegisterOfLegal", entity.NationalRegisterOfLegal);
             sqlCommand.Parameters.AddWithValue("@Situation", entity.Situation);
@@ -192,7 +191,7 @@ namespace Ecomerce.Infrastructure.Repository.Legal
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);
         }
 
-        private static void GetLegalUpdate_Legal(SqlCommand sqlCommand, Domain.Model.Legal entity)
+        private static void GetLegalUpdate_Legal(SqlCommand sqlCommand, Domain.Models.Legal entity)
         {
             sqlCommand.Parameters.AddWithValue("@Id", entity.LegalId);
             sqlCommand.Parameters.AddWithValue("@NationalRegisterOfLegal", entity.NationalRegisterOfLegal);

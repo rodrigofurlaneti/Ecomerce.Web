@@ -1,5 +1,7 @@
-﻿using Ecomerce.Web.Model;
+﻿using Ecomerce.Domain.Models;
+using Ecomerce.Web.Model;
 using Microsoft.AspNetCore.Mvc;
+using Product = Ecomerce.Web.Model.Product;
 
 namespace Ecomerce.Web.Controllers
 {
@@ -7,9 +9,9 @@ namespace Ecomerce.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly ShoppingCart _shoppingCart;
+        private readonly Ecomerce.Web.Model.ShoppingCart _shoppingCart;
         public ShoppingCartController(ILogger<HomeController> logger,
-            ShoppingCart shoppingCart)
+            Ecomerce.Web.Model.ShoppingCart shoppingCart)
         {
             _logger = logger;
             _shoppingCart = shoppingCart;

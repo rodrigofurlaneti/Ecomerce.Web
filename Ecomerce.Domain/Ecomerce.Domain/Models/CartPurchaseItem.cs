@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ecomerce.Domain.Model
+namespace Ecomerce.Domain.Models
 {
     [Table("Category")]
     public class CartPurchaseItem : Base
@@ -15,5 +15,17 @@ namespace Ecomerce.Domain.Model
 
         [StringLength(200)]
         public string? ShoppingCartId { get; set; }
+
+        public CartPurchaseItem()
+        {
+            
+        }
+
+        public CartPurchaseItem(int cartPurchaseItemId, Product product, int amount)
+        {
+            CartPurchaseItemId = cartPurchaseItemId;
+            Product = product;
+            Amount = amount;
+        }
     }
 }

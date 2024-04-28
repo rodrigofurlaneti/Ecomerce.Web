@@ -1,4 +1,4 @@
-﻿using Ecomerce.Domain.Model;
+﻿using Ecomerce.Web.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecomerce.Web.Context
@@ -14,5 +14,6 @@ namespace Ecomerce.Web.Context
         public DbSet<Legal> Legal { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<CartPurchaseItem> CartPurchaseItem { get; set; }
     }
 }

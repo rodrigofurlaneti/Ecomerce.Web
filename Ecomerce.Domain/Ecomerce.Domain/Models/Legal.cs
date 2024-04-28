@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ecomerce.Domain.Model
+namespace Ecomerce.Domain.Models
 {
     [Table("Legal")]
     public class Legal : Base

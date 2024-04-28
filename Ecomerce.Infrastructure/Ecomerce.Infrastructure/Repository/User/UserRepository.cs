@@ -1,12 +1,6 @@
-﻿using Ecomerce.Domain.Model;
-using Ecomerce.Domain.SeedWork;
-using System;
-using System.Collections.Generic;
+﻿using Ecomerce.Domain.SeedWork;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ecomerce.Infrastructure.Repository.User
 {
@@ -37,9 +31,9 @@ namespace Ecomerce.Infrastructure.Repository.User
             }
         }
 
-        public async Task<List<Domain.Model.User>> GetAsync()
+        public async Task<List<Domain.Models.User>> GetAsync()
         {
-            List<Domain.Model.User> list = new List<Domain.Model.User>();
+            List<Domain.Models.User> list = new List<Domain.Models.User>();
             try
             {
                 _logger.TraceEntry("Infrastructure_User_GetAsync");
@@ -67,9 +61,9 @@ namespace Ecomerce.Infrastructure.Repository.User
             return list;
         }
 
-        public async Task<Domain.Model.User> GetByIdAsync(int id)
+        public async Task<Domain.Models.User> GetByIdAsync(int id)
         {
-            Domain.Model.User entity = new Domain.Model.User();
+            Domain.Models.User entity = new Domain.Models.User();
             try
             {
                 _logger.TraceEntry("Infrastructure_User_GetByIdAsync");
@@ -97,7 +91,7 @@ namespace Ecomerce.Infrastructure.Repository.User
             return entity;
         }
 
-        public async Task PostAsync(Domain.Model.User entity)
+        public async Task PostAsync(Domain.Models.User entity)
         {
             try
             {
@@ -120,7 +114,7 @@ namespace Ecomerce.Infrastructure.Repository.User
             }
         }
 
-        public async Task PutAsync(Domain.Model.User entity)
+        public async Task PutAsync(Domain.Models.User entity)
         {
             try
             {
@@ -145,16 +139,16 @@ namespace Ecomerce.Infrastructure.Repository.User
 
         #region Helpers
 
-        private static void GetListUser(SqlDataReader sqlDataReader, List<Domain.Model.User> listVehicleUserModel)
+        private static void GetListUser(SqlDataReader sqlDataReader, List<Domain.Models.User> listVehicleUserModel)
         {
-            Domain.Model.User userModel = new Domain.Model.User();
+            Domain.Models.User userModel = new Domain.Models.User();
             GetUser(sqlDataReader, userModel);
             listVehicleUserModel.Add(userModel);
         }
 
-        private static void GetUser(SqlDataReader sqlDataReader, Domain.Model.User userModel)
+        private static void GetUser(SqlDataReader sqlDataReader, Domain.Models.User userModel)
         {
-            userModel.Profile = new Domain.Model.Profile();
+            userModel.Profile = new Domain.Models.Profile();
             userModel.Id = Convert.ToInt32(sqlDataReader["Id"]);
             userModel.Name = Convert.ToString(sqlDataReader["Name"]);
             userModel.Profile.ProfileId = Convert.ToInt32(sqlDataReader["IdProfile"]);
@@ -163,7 +157,7 @@ namespace Ecomerce.Infrastructure.Repository.User
             userModel.DateUpdate = Convert.ToDateTime(sqlDataReader["DateUpdate"]);
         }
 
-        private static void GetUserInsert(SqlCommand sqlCommand, Domain.Model.User entity)
+        private static void GetUserInsert(SqlCommand sqlCommand, Domain.Models.User entity)
         {
             sqlCommand.Parameters.AddWithValue("@Name", entity.Name);
             sqlCommand.Parameters.AddWithValue("@IdProfile", entity.Profile.ProfileId);
@@ -172,7 +166,7 @@ namespace Ecomerce.Infrastructure.Repository.User
             sqlCommand.Parameters.AddWithValue("@DateUpdate", entity.DateUpdate);
         }
 
-        private static void GetUserUpdate(SqlCommand sqlCommand, Domain.Model.User entity)
+        private static void GetUserUpdate(SqlCommand sqlCommand, Domain.Models.User entity)
         {
             sqlCommand.Parameters.AddWithValue("@Id", entity.Id);
             sqlCommand.Parameters.AddWithValue("@Name", entity.Name);

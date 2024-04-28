@@ -22,7 +22,7 @@ namespace Ecomerce.Web.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Ecomerce.Domain.Model.Category", b =>
+            modelBuilder.Entity("Ecomerce.Web.Model.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace Ecomerce.Web.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Ecomerce.Domain.Model.Legal", b =>
+            modelBuilder.Entity("Ecomerce.Web.Model.Legal", b =>
                 {
                     b.Property<int>("LegalId")
                         .ValueGeneratedOnAdd()
@@ -155,7 +155,7 @@ namespace Ecomerce.Web.Migrations
                     b.ToTable("Legal");
                 });
 
-            modelBuilder.Entity("Ecomerce.Domain.Model.PhysicalPerson", b =>
+            modelBuilder.Entity("Ecomerce.Web.Model.PhysicalPerson", b =>
                 {
                     b.Property<int>("PhysicalPersonId")
                         .ValueGeneratedOnAdd()
@@ -248,7 +248,7 @@ namespace Ecomerce.Web.Migrations
                     b.ToTable("PhysicalPerson");
                 });
 
-            modelBuilder.Entity("Ecomerce.Domain.Model.Product", b =>
+            modelBuilder.Entity("Ecomerce.Web.Model.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -298,7 +298,7 @@ namespace Ecomerce.Web.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Ecomerce.Domain.Model.Register", b =>
+            modelBuilder.Entity("Ecomerce.Web.Model.Register", b =>
                 {
                     b.Property<int>("RegisterId")
                         .ValueGeneratedOnAdd()
@@ -359,9 +359,9 @@ namespace Ecomerce.Web.Migrations
                     b.ToTable("Register");
                 });
 
-            modelBuilder.Entity("Ecomerce.Domain.Model.Product", b =>
+            modelBuilder.Entity("Ecomerce.Web.Model.Product", b =>
                 {
-                    b.HasOne("Ecomerce.Domain.Model.Category", "Category")
+                    b.HasOne("Ecomerce.Web.Model.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -370,7 +370,7 @@ namespace Ecomerce.Web.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Ecomerce.Domain.Model.Category", b =>
+            modelBuilder.Entity("Ecomerce.Web.Model.Category", b =>
                 {
                     b.Navigation("Products");
                 });

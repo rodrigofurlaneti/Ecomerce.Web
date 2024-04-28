@@ -15,5 +15,17 @@ namespace Ecomerce.Web.Model
 
         [StringLength(200)]
         public string? ShoppingCartId { get; set; }
+
+        public CartPurchaseItem()
+        {
+            
+        }
+
+        public CartPurchaseItem(int cartPurchaseItemId, Product product, int amount)
+        {
+            CartPurchaseItemId = cartPurchaseItemId;
+            Product = product;
+            Amount = amount;
+        }
     }
 }

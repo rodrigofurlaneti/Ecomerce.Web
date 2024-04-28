@@ -1,5 +1,4 @@
-﻿using Ecomerce.Domain.Model;
-using Ecomerce.Domain.SeedWork;
+﻿using Ecomerce.Domain.SeedWork;
 using Ecomerce.Infrastructure.Repository.Legal;
 
 namespace Ecomerce.Service.Service.Legal
@@ -40,7 +39,7 @@ namespace Ecomerce.Service.Service.Legal
             }
         }
 
-        public async Task<List<Domain.Model.Legal>> GetAsync()
+        public async Task<List<Domain.Models.Legal>> GetAsync()
         {
             try
             {
@@ -57,7 +56,7 @@ namespace Ecomerce.Service.Service.Legal
             }
         }
 
-        public async Task<Domain.Model.Legal> GetByIdAsync(int id)
+        public async Task<Domain.Models.Legal> GetByIdAsync(int id)
         {
             try
             {
@@ -74,7 +73,7 @@ namespace Ecomerce.Service.Service.Legal
             }
         }
 
-        public async Task PostAsync(Domain.Model.Legal entity)
+        public async Task PostAsync(Domain.Models.Legal entity)
         {
             try
             {
@@ -90,7 +89,7 @@ namespace Ecomerce.Service.Service.Legal
             }
         }
 
-        public async Task PutAsync(Domain.Model.Legal entity)
+        public async Task PutAsync(Domain.Models.Legal entity)
         {
             try
             {

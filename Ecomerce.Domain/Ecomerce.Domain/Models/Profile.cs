@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ecomerce.Domain.Model
+namespace Ecomerce.Domain.Models
 {
     public class Profile : Base
     {

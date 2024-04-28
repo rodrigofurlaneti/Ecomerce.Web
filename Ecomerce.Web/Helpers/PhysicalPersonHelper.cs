@@ -1,4 +1,4 @@
-﻿using Ecomerce.Domain.Model;
+﻿using Ecomerce.Domain.Models;
 
 namespace Ecomerce.Web.Helpers
 {

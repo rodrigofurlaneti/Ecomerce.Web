@@ -1,5 +1,4 @@
-﻿using Ecomerce.Domain.Model;
-using Ecomerce.Domain.SeedWork;
+﻿using Ecomerce.Domain.SeedWork;
 using Ecomerce.Infrastructure.Repository.PhysicalPerson;
 
 namespace Ecomerce.Service.Service.PhysicalPerson
@@ -40,7 +39,7 @@ namespace Ecomerce.Service.Service.PhysicalPerson
             }
         }
 
-        public async Task<List<Domain.Model.PhysicalPerson>> GetAsync()
+        public async Task<List<Domain.Models.PhysicalPerson>> GetAsync()
         {
             try
             {
@@ -57,7 +56,7 @@ namespace Ecomerce.Service.Service.PhysicalPerson
             }
         }
 
-        public async Task<Domain.Model.PhysicalPerson> GetByIdAsync(int id)
+        public async Task<Domain.Models.PhysicalPerson> GetByIdAsync(int id)
         {
             try
             {
@@ -74,7 +73,7 @@ namespace Ecomerce.Service.Service.PhysicalPerson
             }
         }
 
-        public async Task PostAsync(Domain.Model.PhysicalPerson entity)
+        public async Task PostAsync(Domain.Models.PhysicalPerson entity)
         {
             try
             {
@@ -90,7 +89,7 @@ namespace Ecomerce.Service.Service.PhysicalPerson
             }
         }
 
-        public async Task PutAsync(Domain.Model.PhysicalPerson entity)
+        public async Task PutAsync(Domain.Models.PhysicalPerson entity)
         {
             try
             {

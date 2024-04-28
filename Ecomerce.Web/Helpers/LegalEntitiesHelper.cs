@@ -1,12 +1,12 @@
-﻿using Ecomerce.Domain.Model;
+﻿using Ecomerce.Web.Model;
 
 namespace Ecomerce.Web.Helpers
 {
     public static class LegalHelper
     {
-        public static Legal DeparaViewToController_Legal(IFormCollection iFormCollection)
+        public static Ecomerce.Domain.Models.Legal DeparaViewToController_Legal(IFormCollection iFormCollection)
         {
-            Legal registerEntity = new Legal();
+            Ecomerce.Domain.Models.Legal registerEntity = new Ecomerce.Domain.Models.Legal();
 
             foreach (var form in iFormCollection)
             {
