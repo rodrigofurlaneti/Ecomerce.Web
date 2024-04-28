@@ -1,69 +1,62 @@
-﻿using Ecomerce.Infrastructure.Repository.Profile;
-using Ecomerce.Infrastructure.Repository.User;
-using Ecomerce.Service.Service.Profile;
-using Ecomerce.Service.Service.User;
-using Ecomerce.Domain.SeedWork;
-using Ecomerce.Infrastructure.Repository.PhysicalPerson;
-using Ecomerce.Service.Service.PhysicalPerson;
-using Ecomerce.Infrastructure.Repository.LegalEntities;
-using Ecomerce.Service.Service.LegalEntities;
+﻿using Ecomerce.Web.Helpers;
+using Microsoft.AspNetCore.Http;
+using System;
 
-namespace Ecomerce.Web
-{
+namespace Ecomerce.Web;
     public class Startup : IStartup
     {
-        public IConfiguration Configuration { get; set; }
-
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
-
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<Domain.SeedWork.ILogger, Logger>();
+            services.AddHttpContextAccessor();
 
-            services.AddScoped<IProfileRepository, ProfileRepository>();
-
-            services.AddScoped<IProfileService, ProfileService>();
-
-            services.AddScoped<IUserRepository, UserRepository>();
-
-            services.AddScoped<IUserService, UserService>();
-
-            services.AddScoped<IPhysicalPersonRepository, PhysicalPersonRepository>();
-
-            services.AddScoped<IPhysicalPersonService, PhysicalPersonService>();
-
-            services.AddScoped<ILegalEntitiesRepository, LegalEntitiesRepository>();
-
-            services.AddScoped<ILegalEntitiesService, LegalEntitiesService>();
-
+            services.AddOptions();
+        
+            services.AddMvc();
+            
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
+            services.AddScoped(sp => ShoppingCartHelper.GetShoppingCart(sp));
+            
             services.AddControllersWithViews();
 
+            services.AddMemoryCache();
+            
+            services.AddSession();
         }
 
-        public void Configure(WebApplication webApplication, IWebHostEnvironment webHostEnvironment)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (!webApplication.Environment.IsDevelopment())
+            if (env.IsDevelopment())
             {
-                webApplication.UseExceptionHandler("/Home/Error");
-
-                webApplication.UseHsts();
+                app.UseDeveloperExceptionPage();
             }
-            webApplication.UseHttpsRedirection();
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            
+                app.UseHsts();
+            }
+            app.UseHttpsRedirection();
 
-            webApplication.UseStaticFiles();
+            app.UseStaticFiles();
+            
+            app.UseRouting();
 
-            webApplication.UseRouting();
+            app.UseSession();
 
-            webApplication.UseAuthorization();
+            app.UseAuthorization();
 
-            webApplication.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-            webApplication.Run();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
-}
